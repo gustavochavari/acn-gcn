@@ -1,0 +1,916 @@
+══════════════════════════════════════════════════════════════════════
+  Dataset: Texas  |  curvatura: ollivier
+══════════════════════════════════════════════════════════════════════
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/new_data/texas/out1_node_feature_label.txt
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/new_data/texas/out1_graph_edges.txt
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/texas_split_0.6_0.2_0.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/texas_split_0.6_0.2_1.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/texas_split_0.6_0.2_2.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/texas_split_0.6_0.2_3.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/texas_split_0.6_0.2_4.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/texas_split_0.6_0.2_5.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/texas_split_0.6_0.2_6.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/texas_split_0.6_0.2_7.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/texas_split_0.6_0.2_8.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/texas_split_0.6_0.2_9.npz
+  N=183  E=757  classes=5  splits=10
+Processing...
+Done!
+  curvatura ollivier (Texas): 0.3s  (E=757)
+  homofilia(treino)=0.125 → hetero  (τ=2.0  rm_sl=True)
+
+  ── ACN diagnóstico [τ=2.0] (τ_α=2.0) ──
+    κ̄_i (nós)    min=-0.3432  p25=+0.0096  med=+0.0506  p75=+0.1983  max=+0.5000  std=0.1668  spread=0.8432
+    α_i  (nós)    min=+0.3348  p25=+0.5048  med=+0.5253  p75=+0.5979  max=+0.7311  std=0.0801  spread=0.3962
+    r̃_ij (arest)  min=+0.0129  p25=+0.0694  med=+0.1748  p75=+0.3288  max=+0.6357  std=0.1750  spread=0.6227
+    α_i  dist.    histograma (10 bins, N=183 nós):
+      [+0.335, +0.374)                                      5 (  2.7%)
+      [+0.374, +0.414)                                      6 (  3.3%)
+      [+0.414, +0.454)  █                                   8 (  4.4%)
+      [+0.454, +0.493)  ███                                19 ( 10.4%)
+      [+0.493, +0.533)  ██████████                         66 ( 36.1%)
+      [+0.533, +0.573)  ████                               28 ( 15.3%)
+      [+0.573, +0.612)  █                                  12 (  6.6%)
+      [+0.612, +0.652)  ███                                22 ( 12.0%)
+      [+0.652, +0.691)  █                                   7 (  3.8%)
+      [+0.691, +0.731)  █                                  10 (  5.5%)
+  ✓  α_i diversificado (std=0.08006)
+  → figura salva: ./figs/Texas_acn_scatter_tau2p0.png
+  [dispersão] std(κ)=0.3006  std(α_i)=0.0801
+
+  ── Baselines (10×5 runs) ──
+    GCN         :  58.0± 4.4
+    GAT         :  58.5± 5.5
+    GraphSAGE   :  74.6± 8.1
+    H2GCN       :  78.4± 6.0
+    GPRGNN      :  68.8±10.4
+    APPNP       :  57.0± 6.9
+    MixHop      :  64.4± 8.3
+    CurvGN      :  59.1± 7.4
+    FAGCN       :  59.7± 6.9
+    ACM-GCN     :  76.9± 6.9
+    A2GCN       :  60.7± 7.4
+
+  ── Bloco 1: norm sweep (CGNN) ──
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmlinear_normsrc_feat2d.png
+    nctm=linear     norm=src      CGNN= 56.3± 5.2
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmlinear_normdst_feat2d.png
+    nctm=linear     norm=dst      CGNN= 56.6± 6.5
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmlinear_normsym_feat2d.png
+    nctm=linear     norm=sym      CGNN= 57.0± 5.2
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmlinear_normdeep_sym_feat2d.png
+    nctm=linear     norm=deep_sym CGNN= 56.4± 4.9
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmlinear_normalpha_feat2d.png
+    nctm=linear     norm=alpha    CGNN= 56.7± 5.0
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmlinear_normacn_feat2d.png
+    nctm=linear     norm=acn      CGNN= 56.8± 5.6
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmsigmoid_normsrc_feat2d.png
+    nctm=sigmoid    norm=src      CGNN= 57.0± 5.1
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmsigmoid_normdst_feat2d.png
+    nctm=sigmoid    norm=dst      CGNN= 57.6± 5.2
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmsigmoid_normsym_feat2d.png
+    nctm=sigmoid    norm=sym      CGNN= 57.8± 4.6
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmsigmoid_normdeep_sym_feat2d.png
+    nctm=sigmoid    norm=deep_sym CGNN= 56.2± 4.8
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmsigmoid_normalpha_feat2d.png
+    nctm=sigmoid    norm=alpha    CGNN= 57.5± 4.5
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmsigmoid_normacn_feat2d.png
+    nctm=sigmoid    norm=acn      CGNN= 57.4± 5.1
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmsigmatemp_normsrc_feat2d.png
+    nctm=sigmatemp  norm=src      CGNN= 57.0± 5.3
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmsigmatemp_normdst_feat2d.png
+    nctm=sigmatemp  norm=dst      CGNN= 56.7± 5.6
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmsigmatemp_normsym_feat2d.png
+    nctm=sigmatemp  norm=sym      CGNN= 56.9± 5.4
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmsigmatemp_normdeep_sym_feat2d.png
+    nctm=sigmatemp  norm=deep_sym CGNN= 56.4± 4.9
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmsigmatemp_normalpha_feat2d.png
+    nctm=sigmatemp  norm=alpha    CGNN= 57.4± 4.9
+  → feat2D: ./results/Texas/features/Texas_CGNN_nctmsigmatemp_normacn_feat2d.png
+    nctm=sigmatemp  norm=acn      CGNN= 56.6± 5.2
+
+  ── Bloco 2: ablação ACN-GCN ──
+  → feat2D: ./results/Texas/features/Texas_ACN-GCN-noroot_normsrc_feat2d.png
+  → feat2D: ./results/Texas/features/Texas_ACN-GCN_normsrc_feat2d.png
+    norm=src      noroot= 69.0± 7.2  ACN-GCN= 76.1± 5.7
+  → feat2D: ./results/Texas/features/Texas_ACN-GCN-noroot_normdst_feat2d.png
+  → feat2D: ./results/Texas/features/Texas_ACN-GCN_normdst_feat2d.png
+    norm=dst      noroot= 68.0± 6.8  ACN-GCN= 76.1± 6.9
+  → feat2D: ./results/Texas/features/Texas_ACN-GCN-noroot_normsym_feat2d.png
+  → feat2D: ./results/Texas/features/Texas_ACN-GCN_normsym_feat2d.png
+    norm=sym      noroot= 68.4± 8.7  ACN-GCN= 78.3± 7.3
+  → feat2D: ./results/Texas/features/Texas_ACN-GCN-noroot_normdeep_sym_feat2d.png
+  → feat2D: ./results/Texas/features/Texas_ACN-GCN_normdeep_sym_feat2d.png
+    norm=deep_sym noroot= 68.7± 7.5  ACN-GCN= 80.8± 5.4
+  → feat2D: ./results/Texas/features/Texas_ACN-GCN-noroot_normalpha_feat2d.png
+  → feat2D: ./results/Texas/features/Texas_ACN-GCN_normalpha_feat2d.png
+    norm=alpha    noroot= 67.9± 7.3  ACN-GCN= 77.0± 6.8
+  → feat2D: ./results/Texas/features/Texas_ACN-GCN-noroot_normacn_feat2d.png
+  → feat2D: ./results/Texas/features/Texas_ACN-GCN_normacn_feat2d.png
+    norm=acn      noroot= 68.4± 7.9  ACN-GCN= 77.3± 6.1
+
+  Significância (ACN-GCN + deep_sym vs baselines)───────────────────────
+  GCN         : Δacc=+22.8  p_wilcoxon=0.0000*  p_t=0.0000
+  GAT         : Δacc=+22.2  p_wilcoxon=0.0000*  p_t=0.0000
+  GraphSAGE   : Δacc= +6.2  p_wilcoxon=0.0000*  p_t=0.0000
+  H2GCN       : Δacc= +2.3  p_wilcoxon=0.0215*  p_t=0.0179
+  GPRGNN      : Δacc=+12.0  p_wilcoxon=0.0000*  p_t=0.0000
+  APPNP       : Δacc=+23.8  p_wilcoxon=0.0000*  p_t=0.0000
+  MixHop      : Δacc=+16.4  p_wilcoxon=0.0000*  p_t=0.0000
+  CurvGN      : Δacc=+21.6  p_wilcoxon=0.0000*  p_t=0.0000
+  FAGCN       : Δacc=+21.1  p_wilcoxon=0.0000*  p_t=0.0000
+  ACM-GCN     : Δacc= +3.8  p_wilcoxon=0.0040*  p_t=0.0028
+  A2GCN       : Δacc=+20.1  p_wilcoxon=0.0000*  p_t=0.0000
+
+════════════════════════════════════════════════════════════════════════
+  RESULTADOS — Texas
+════════════════════════════════════════════════════════════════════════
+
+  Baselines─────────────────────────────────────────────────────────────
+  GCN           :  58.0± 4.4
+  GAT           :  58.5± 5.5
+  GraphSAGE     :  74.6± 8.1
+  H2GCN         :  78.4± 6.0
+  GPRGNN        :  68.8±10.4
+  APPNP         :  57.0± 6.9
+  MixHop        :  64.4± 8.3
+  CurvGN        :  59.1± 7.4
+  FAGCN         :  59.7± 6.9
+  ACM-GCN       :  76.9± 6.9
+  A2GCN         :  60.7± 7.4
+
+  Bloco 1 — CGNN (nctm × norm)──────────────────────────────────────────
+  nctm/norm                     CGNN
+  ────────────────────────────────────────────────────────────
+  linear/src               56.3± 5.2
+  linear/dst               56.6± 6.5
+  linear/sym               57.0± 5.2
+  linear/deep_sym          56.4± 4.9
+  linear/alpha             56.7± 5.0
+  linear/acn               56.8± 5.6
+  ────────────────────────────────────────────────────────────
+  sigmoid/src              57.0± 5.1
+  sigmoid/dst              57.6± 5.2
+  sigmoid/sym              57.8± 4.6
+  sigmoid/deep_sym         56.2± 4.8
+  sigmoid/alpha            57.5± 4.5
+  sigmoid/acn              57.4± 5.1
+  ────────────────────────────────────────────────────────────
+  sigmatemp/src            57.0± 5.3
+  sigmatemp/dst            56.7± 5.6
+  sigmatemp/sym            56.9± 5.4
+  sigmatemp/deep_sym       56.4± 4.9
+  sigmatemp/alpha          57.4± 4.9
+  sigmatemp/acn            56.6± 5.2
+
+  Bloco 2 — ACN-GCN ablação (nctm=sigmatemp)────────────────────────────
+  norm                          CGNN  ACN-GCN-noroot         ACN-GCN
+  ────────────────────────────────────────────────────────────
+  src                      57.0± 5.3       69.0± 7.2       76.1± 5.7
+  dst                      56.7± 5.6       68.0± 6.8       76.1± 6.9
+  sym                      56.9± 5.4       68.4± 8.7       78.3± 7.3
+  deep_sym                 56.4± 4.9       68.7± 7.5       80.8± 5.4
+  alpha                    57.4± 4.9       67.9± 7.3       77.0± 6.8
+  acn                      56.6± 5.2       68.4± 7.9       77.3± 6.1
+
+  Cadeia focada — norm=acn (cada linha = uma contribuição)──────────────
+  Modelo                                 Acc  Contribuição
+  ────────────────────────────────────────────────────────────────────
+  CGNN + sym (fixo)                56.9± 5.4  curvatura + norm fixa
+  CGNN + acn                       56.6± 5.2  + normalização adaptativa (α_i)
+  ACN-GCN-noroot + acn             68.4± 7.9  + remoção self-loops (hetero)
+  ACN-GCN + acn                    77.3± 6.1  + W_root separado
+
+  Best (max sobre sweep)────────────────────────────────────────────────
+  CGNN                  :  56.9± 5.2  (n=900)
+  ACN-GCN-noroot        :  68.4± 7.6  (n=300)
+  ACN-GCN               :  77.6± 6.6  (n=300)
+════════════════════════════════════════════════════════════════════════
+
+══════════════════════════════════════════════════════════════════════
+  Dataset: Wisconsin  |  curvatura: ollivier
+══════════════════════════════════════════════════════════════════════
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/new_data/wisconsin/out1_node_feature_label.txt
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/new_data/wisconsin/out1_graph_edges.txt
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/wisconsin_split_0.6_0.2_0.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/wisconsin_split_0.6_0.2_1.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/wisconsin_split_0.6_0.2_2.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/wisconsin_split_0.6_0.2_3.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/wisconsin_split_0.6_0.2_4.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/wisconsin_split_0.6_0.2_5.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/wisconsin_split_0.6_0.2_6.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/wisconsin_split_0.6_0.2_7.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/wisconsin_split_0.6_0.2_8.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/wisconsin_split_0.6_0.2_9.npz
+Processing...
+Done!
+  N=251  E=1167  classes=5  splits=10
+  curvatura ollivier (Wisconsin): 0.3s  (E=1167)
+  homofilia(treino)=0.116 → hetero  (τ=2.0  rm_sl=True)
+
+  ── ACN diagnóstico [τ=2.0] (τ_α=2.0) ──
+    κ̄_i (nós)    min=-0.3467  p25=-0.0455  med=+0.0315  p75=+0.1836  max=+0.5000  std=0.1725  spread=0.8467
+    α_i  (nós)    min=+0.3333  p25=+0.4773  med=+0.5157  p75=+0.5908  max=+0.7311  std=0.0830  spread=0.3978
+    r̃_ij (arest)  min=+0.0105  p25=+0.0906  med=+0.1528  p75=+0.2790  max=+0.6360  std=0.1548  spread=0.6255
+    α_i  dist.    histograma (10 bins, N=251 nós):
+      [+0.333, +0.373)                                      7 (  2.8%)
+      [+0.373, +0.413)                                      6 (  2.4%)
+      [+0.413, +0.453)  ███                                26 ( 10.4%)
+      [+0.453, +0.492)  ████                               38 ( 15.1%)
+      [+0.492, +0.532)  ███████                            60 ( 23.9%)
+      [+0.532, +0.572)  ████                               38 ( 15.1%)
+      [+0.572, +0.612)  ██                                 23 (  9.2%)
+      [+0.612, +0.652)  ███                                30 ( 12.0%)
+      [+0.652, +0.691)  █                                  11 (  4.4%)
+      [+0.691, +0.731)  █                                  12 (  4.8%)
+  ✓  α_i diversificado (std=0.08295)
+  → figura salva: ./figs/Wisconsin_acn_scatter_tau2p0.png
+  [dispersão] std(κ)=0.3011  std(α_i)=0.0830
+
+  ── Baselines (10×5 runs) ──
+    GCN         :  52.8± 5.4
+    GAT         :  49.7± 7.6
+    GraphSAGE   :  72.9± 5.5
+    H2GCN       :  81.2± 5.1
+    GPRGNN      :  68.8±13.5
+    APPNP       :  51.1± 5.0
+    MixHop      :  68.5± 4.9
+    CurvGN      :  58.3± 8.8
+    FAGCN       :  55.3± 7.6
+    ACM-GCN     :  74.7± 5.2
+    A2GCN       :  54.7±10.0
+
+  ── Bloco 1: norm sweep (CGNN) ──
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmlinear_normsrc_feat2d.png
+    nctm=linear     norm=src      CGNN= 49.6± 5.6
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmlinear_normdst_feat2d.png
+    nctm=linear     norm=dst      CGNN= 49.4± 6.0
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmlinear_normsym_feat2d.png
+    nctm=linear     norm=sym      CGNN= 49.8± 5.8
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmlinear_normdeep_sym_feat2d.png
+    nctm=linear     norm=deep_sym CGNN= 47.8± 4.0
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmlinear_normalpha_feat2d.png
+    nctm=linear     norm=alpha    CGNN= 48.4± 6.3
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmlinear_normacn_feat2d.png
+    nctm=linear     norm=acn      CGNN= 49.9± 6.3
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmsigmoid_normsrc_feat2d.png
+    nctm=sigmoid    norm=src      CGNN= 47.7± 5.1
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmsigmoid_normdst_feat2d.png
+    nctm=sigmoid    norm=dst      CGNN= 49.5± 6.4
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmsigmoid_normsym_feat2d.png
+    nctm=sigmoid    norm=sym      CGNN= 49.6± 5.6
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmsigmoid_normdeep_sym_feat2d.png
+    nctm=sigmoid    norm=deep_sym CGNN= 47.8± 4.6
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmsigmoid_normalpha_feat2d.png
+    nctm=sigmoid    norm=alpha    CGNN= 49.4± 6.0
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmsigmoid_normacn_feat2d.png
+    nctm=sigmoid    norm=acn      CGNN= 51.3± 4.2
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmsigmatemp_normsrc_feat2d.png
+    nctm=sigmatemp  norm=src      CGNN= 49.1± 6.5
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmsigmatemp_normdst_feat2d.png
+    nctm=sigmatemp  norm=dst      CGNN= 48.4± 6.3
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmsigmatemp_normsym_feat2d.png
+    nctm=sigmatemp  norm=sym      CGNN= 49.8± 6.3
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmsigmatemp_normdeep_sym_feat2d.png
+    nctm=sigmatemp  norm=deep_sym CGNN= 46.2± 4.4
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmsigmatemp_normalpha_feat2d.png
+    nctm=sigmatemp  norm=alpha    CGNN= 48.7± 6.1
+  → feat2D: ./results/Wisconsin/features/Wisconsin_CGNN_nctmsigmatemp_normacn_feat2d.png
+    nctm=sigmatemp  norm=acn      CGNN= 49.6± 5.3
+
+  ── Bloco 2: ablação ACN-GCN ──
+  → feat2D: ./results/Wisconsin/features/Wisconsin_ACN-GCN-noroot_normsrc_feat2d.png
+  → feat2D: ./results/Wisconsin/features/Wisconsin_ACN-GCN_normsrc_feat2d.png
+    norm=src      noroot= 66.8± 5.8  ACN-GCN= 76.0± 5.5
+  → feat2D: ./results/Wisconsin/features/Wisconsin_ACN-GCN-noroot_normdst_feat2d.png
+  → feat2D: ./results/Wisconsin/features/Wisconsin_ACN-GCN_normdst_feat2d.png
+    norm=dst      noroot= 66.1± 5.5  ACN-GCN= 74.5± 5.7
+  → feat2D: ./results/Wisconsin/features/Wisconsin_ACN-GCN-noroot_normsym_feat2d.png
+  → feat2D: ./results/Wisconsin/features/Wisconsin_ACN-GCN_normsym_feat2d.png
+    norm=sym      noroot= 67.0± 6.3  ACN-GCN= 76.7± 5.2
+  → feat2D: ./results/Wisconsin/features/Wisconsin_ACN-GCN-noroot_normdeep_sym_feat2d.png
+  → feat2D: ./results/Wisconsin/features/Wisconsin_ACN-GCN_normdeep_sym_feat2d.png
+    norm=deep_sym noroot= 64.3± 6.8  ACN-GCN= 82.8± 4.6
+  → feat2D: ./results/Wisconsin/features/Wisconsin_ACN-GCN-noroot_normalpha_feat2d.png
+  → feat2D: ./results/Wisconsin/features/Wisconsin_ACN-GCN_normalpha_feat2d.png
+    norm=alpha    noroot= 65.8± 6.1  ACN-GCN= 76.0± 5.4
+  → feat2D: ./results/Wisconsin/features/Wisconsin_ACN-GCN-noroot_normacn_feat2d.png
+  → feat2D: ./results/Wisconsin/features/Wisconsin_ACN-GCN_normacn_feat2d.png
+    norm=acn      noroot= 66.2± 5.7  ACN-GCN= 75.8± 4.9
+
+  Significância (ACN-GCN + deep_sym vs baselines)───────────────────────
+  GCN         : Δacc=+30.0  p_wilcoxon=0.0000*  p_t=0.0000
+  GAT         : Δacc=+33.1  p_wilcoxon=0.0000*  p_t=0.0000
+  GraphSAGE   : Δacc= +9.9  p_wilcoxon=0.0000*  p_t=0.0000
+  H2GCN       : Δacc= +1.6  p_wilcoxon=0.0876   p_t=0.0691
+  GPRGNN      : Δacc=+14.0  p_wilcoxon=0.0000*  p_t=0.0000
+  APPNP       : Δacc=+31.7  p_wilcoxon=0.0000*  p_t=0.0000
+  MixHop      : Δacc=+14.3  p_wilcoxon=0.0000*  p_t=0.0000
+  CurvGN      : Δacc=+24.5  p_wilcoxon=0.0000*  p_t=0.0000
+  FAGCN       : Δacc=+27.5  p_wilcoxon=0.0000*  p_t=0.0000
+  ACM-GCN     : Δacc= +8.0  p_wilcoxon=0.0000*  p_t=0.0000
+  A2GCN       : Δacc=+28.1  p_wilcoxon=0.0000*  p_t=0.0000
+
+════════════════════════════════════════════════════════════════════════
+  RESULTADOS — Wisconsin
+════════════════════════════════════════════════════════════════════════
+
+  Baselines─────────────────────────────────────────────────────────────
+  GCN           :  52.8± 5.4
+  GAT           :  49.7± 7.6
+  GraphSAGE     :  72.9± 5.5
+  H2GCN         :  81.2± 5.1
+  GPRGNN        :  68.8±13.5
+  APPNP         :  51.1± 5.0
+  MixHop        :  68.5± 4.9
+  CurvGN        :  58.3± 8.8
+  FAGCN         :  55.3± 7.6
+  ACM-GCN       :  74.7± 5.2
+  A2GCN         :  54.7±10.0
+
+  Bloco 1 — CGNN (nctm × norm)──────────────────────────────────────────
+  nctm/norm                     CGNN
+  ────────────────────────────────────────────────────────────
+  linear/src               49.6± 5.6
+  linear/dst               49.4± 6.0
+  linear/sym               49.8± 5.8
+  linear/deep_sym          47.8± 4.0
+  linear/alpha             48.4± 6.3
+  linear/acn               49.9± 6.3
+  ────────────────────────────────────────────────────────────
+  sigmoid/src              47.7± 5.1
+  sigmoid/dst              49.5± 6.4
+  sigmoid/sym              49.6± 5.6
+  sigmoid/deep_sym         47.8± 4.6
+  sigmoid/alpha            49.4± 6.0
+  sigmoid/acn              51.3± 4.2
+  ────────────────────────────────────────────────────────────
+  sigmatemp/src            49.1± 6.5
+  sigmatemp/dst            48.4± 6.3
+  sigmatemp/sym            49.8± 6.3
+  sigmatemp/deep_sym       46.2± 4.4
+  sigmatemp/alpha          48.7± 6.1
+  sigmatemp/acn            49.6± 5.3
+
+  Bloco 2 — ACN-GCN ablação (nctm=sigmatemp)────────────────────────────
+  norm                          CGNN  ACN-GCN-noroot         ACN-GCN
+  ────────────────────────────────────────────────────────────
+  src                      49.1± 6.5       66.8± 5.8       76.0± 5.5
+  dst                      48.4± 6.3       66.1± 5.5       74.5± 5.7
+  sym                      49.8± 6.3       67.0± 6.3       76.7± 5.2
+  deep_sym                 46.2± 4.4       64.3± 6.8       82.8± 4.6
+  alpha                    48.7± 6.1       65.8± 6.1       76.0± 5.4
+  acn                      49.6± 5.3       66.2± 5.7       75.8± 4.9
+
+  Cadeia focada — norm=acn (cada linha = uma contribuição)──────────────
+  Modelo                                 Acc  Contribuição
+  ────────────────────────────────────────────────────────────────────
+  CGNN + sym (fixo)                49.8± 6.3  curvatura + norm fixa
+  CGNN + acn                       49.6± 5.3  + normalização adaptativa (α_i)
+  ACN-GCN-noroot + acn             66.2± 5.7  + remoção self-loops (hetero)
+  ACN-GCN + acn                    75.8± 4.9  + W_root separado
+
+  Best (max sobre sweep)────────────────────────────────────────────────
+  CGNN                  :  49.0± 5.8  (n=900)
+  ACN-GCN-noroot        :  66.0± 6.1  (n=300)
+  ACN-GCN               :  77.0± 5.9  (n=300)
+════════════════════════════════════════════════════════════════════════
+
+══════════════════════════════════════════════════════════════════════
+  Dataset: Cornell  |  curvatura: ollivier
+══════════════════════════════════════════════════════════════════════
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/new_data/cornell/out1_node_feature_label.txt
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/new_data/cornell/out1_graph_edges.txt
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/cornell_split_0.6_0.2_0.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/cornell_split_0.6_0.2_1.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/cornell_split_0.6_0.2_2.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/cornell_split_0.6_0.2_3.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/cornell_split_0.6_0.2_4.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/cornell_split_0.6_0.2_5.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/cornell_split_0.6_0.2_6.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/cornell_split_0.6_0.2_7.npz
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/cornell_split_0.6_0.2_8.npz
+  N=183  E=740  classes=5  splits=10
+Downloading https://raw.githubusercontent.com/graphdml-uiuc-jlu/geom-gcn/master/splits/cornell_split_0.6_0.2_9.npz
+Processing...
+Done!
+  curvatura ollivier (Cornell): 0.3s  (E=740)
+  homofilia(treino)=0.087 → hetero  (τ=2.0  rm_sl=True)
+
+  ── ACN diagnóstico [τ=2.0] (τ_α=2.0) ──
+    κ̄_i (nós)    min=-0.3784  p25=-0.0149  med=+0.0106  p75=+0.2205  max=+0.5000  std=0.1915  spread=0.8784
+    α_i  (nós)    min=+0.3193  p25=+0.4926  med=+0.5053  p75=+0.6085  max=+0.7311  std=0.0917  spread=0.4117
+    r̃_ij (arest)  min=+0.0132  p25=+0.0941  med=+0.1723  p75=+0.3208  max=+0.6354  std=0.1760  spread=0.6222
+    α_i  dist.    histograma (10 bins, N=183 nós):
+      [+0.319, +0.360)                                      5 (  2.7%)
+      [+0.360, +0.402)                                      6 (  3.3%)
+      [+0.402, +0.443)  ██                                 13 (  7.1%)
+      [+0.443, +0.484)  ██                                 17 (  9.3%)
+      [+0.484, +0.525)  █████████                          59 ( 32.2%)
+      [+0.525, +0.566)  ██                                 18 (  9.8%)
+      [+0.566, +0.608)  ██                                 18 (  9.8%)
+      [+0.608, +0.649)  ████                               26 ( 14.2%)
+      [+0.649, +0.690)  █                                   8 (  4.4%)
+      [+0.690, +0.731)  ██                                 13 (  7.1%)
+  ✓  α_i diversificado (std=0.09173)
+  → figura salva: ./figs/Cornell_acn_scatter_tau2p0.png
+  [dispersão] std(κ)=0.3086  std(α_i)=0.0917
+
+  ── Baselines (10×5 runs) ──
+    GCN         :  46.5± 6.1
+    GAT         :  42.5± 6.6
+    GraphSAGE   :  58.1± 8.1
+    H2GCN       :  71.6± 5.6
+    GPRGNN      :  55.6±14.0
+    APPNP       :  42.2± 7.5
+    MixHop      :  54.3± 8.9
+    CurvGN      :  46.3± 7.4
+    FAGCN       :  46.3± 7.5
+    ACM-GCN     :  66.2± 6.0
+    A2GCN       :  43.1± 6.7
+
+  ── Bloco 1: norm sweep (CGNN) ──
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmlinear_normsrc_feat2d.png
+    nctm=linear     norm=src      CGNN= 41.3± 6.2
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmlinear_normdst_feat2d.png
+    nctm=linear     norm=dst      CGNN= 38.7± 5.5
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmlinear_normsym_feat2d.png
+    nctm=linear     norm=sym      CGNN= 41.5± 5.8
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmlinear_normdeep_sym_feat2d.png
+    nctm=linear     norm=deep_sym CGNN= 37.8± 6.6
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmlinear_normalpha_feat2d.png
+    nctm=linear     norm=alpha    CGNN= 40.7± 5.8
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmlinear_normacn_feat2d.png
+    nctm=linear     norm=acn      CGNN= 41.7± 6.2
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmsigmoid_normsrc_feat2d.png
+    nctm=sigmoid    norm=src      CGNN= 42.2± 6.2
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmsigmoid_normdst_feat2d.png
+    nctm=sigmoid    norm=dst      CGNN= 39.9± 6.3
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmsigmoid_normsym_feat2d.png
+    nctm=sigmoid    norm=sym      CGNN= 41.5± 5.3
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmsigmoid_normdeep_sym_feat2d.png
+    nctm=sigmoid    norm=deep_sym CGNN= 39.7± 7.7
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmsigmoid_normalpha_feat2d.png
+    nctm=sigmoid    norm=alpha    CGNN= 40.6± 5.9
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmsigmoid_normacn_feat2d.png
+    nctm=sigmoid    norm=acn      CGNN= 41.3± 6.5
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmsigmatemp_normsrc_feat2d.png
+    nctm=sigmatemp  norm=src      CGNN= 40.4± 6.2
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmsigmatemp_normdst_feat2d.png
+    nctm=sigmatemp  norm=dst      CGNN= 40.5± 5.3
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmsigmatemp_normsym_feat2d.png
+    nctm=sigmatemp  norm=sym      CGNN= 41.2± 5.4
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmsigmatemp_normdeep_sym_feat2d.png
+    nctm=sigmatemp  norm=deep_sym CGNN= 39.1± 7.2
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmsigmatemp_normalpha_feat2d.png
+    nctm=sigmatemp  norm=alpha    CGNN= 40.4± 6.0
+  → feat2D: ./results/Cornell/features/Cornell_CGNN_nctmsigmatemp_normacn_feat2d.png
+    nctm=sigmatemp  norm=acn      CGNN= 40.7± 7.5
+
+  ── Bloco 2: ablação ACN-GCN ──
+  → feat2D: ./results/Cornell/features/Cornell_ACN-GCN-noroot_normsrc_feat2d.png
+  → feat2D: ./results/Cornell/features/Cornell_ACN-GCN_normsrc_feat2d.png
+    norm=src      noroot= 56.3± 6.6  ACN-GCN= 66.2± 6.6
+  → feat2D: ./results/Cornell/features/Cornell_ACN-GCN-noroot_normdst_feat2d.png
+  → feat2D: ./results/Cornell/features/Cornell_ACN-GCN_normdst_feat2d.png
+    norm=dst      noroot= 56.0± 5.8  ACN-GCN= 64.1± 5.2
+  → feat2D: ./results/Cornell/features/Cornell_ACN-GCN-noroot_normsym_feat2d.png
+  → feat2D: ./results/Cornell/features/Cornell_ACN-GCN_normsym_feat2d.png
+    norm=sym      noroot= 56.3± 5.5  ACN-GCN= 66.5± 6.4
+  → feat2D: ./results/Cornell/features/Cornell_ACN-GCN-noroot_normdeep_sym_feat2d.png
+  → feat2D: ./results/Cornell/features/Cornell_ACN-GCN_normdeep_sym_feat2d.png
+    norm=deep_sym noroot= 57.1± 6.7  ACN-GCN= 72.8± 5.1
+  → feat2D: ./results/Cornell/features/Cornell_ACN-GCN-noroot_normalpha_feat2d.png
+  → feat2D: ./results/Cornell/features/Cornell_ACN-GCN_normalpha_feat2d.png
+    norm=alpha    noroot= 56.0± 4.6  ACN-GCN= 64.3± 7.6
+  → feat2D: ./results/Cornell/features/Cornell_ACN-GCN-noroot_normacn_feat2d.png
+  → feat2D: ./results/Cornell/features/Cornell_ACN-GCN_normacn_feat2d.png
+    norm=acn      noroot= 55.5± 6.0  ACN-GCN= 64.9± 7.3
+
+  Significância (ACN-GCN + deep_sym vs baselines)───────────────────────
+  GCN         : Δacc=+26.2  p_wilcoxon=0.0000*  p_t=0.0000
+  GAT         : Δacc=+30.2  p_wilcoxon=0.0000*  p_t=0.0000
+  GraphSAGE   : Δacc=+14.7  p_wilcoxon=0.0000*  p_t=0.0000
+  H2GCN       : Δacc= +1.1  p_wilcoxon=0.3278   p_t=0.3320
+  GPRGNN      : Δacc=+17.1  p_wilcoxon=0.0000*  p_t=0.0000
+  APPNP       : Δacc=+30.5  p_wilcoxon=0.0000*  p_t=0.0000
+  MixHop      : Δacc=+18.5  p_wilcoxon=0.0000*  p_t=0.0000
+  CurvGN      : Δacc=+26.4  p_wilcoxon=0.0000*  p_t=0.0000
+  FAGCN       : Δacc=+26.4  p_wilcoxon=0.0000*  p_t=0.0000
+  ACM-GCN     : Δacc= +6.6  p_wilcoxon=0.0000*  p_t=0.0000
+  A2GCN       : Δacc=+29.7  p_wilcoxon=0.0000*  p_t=0.0000
+
+════════════════════════════════════════════════════════════════════════
+  RESULTADOS — Cornell
+════════════════════════════════════════════════════════════════════════
+
+  Baselines─────────────────────────────────────────────────────────────
+  GCN           :  46.5± 6.1
+  GAT           :  42.5± 6.6
+  GraphSAGE     :  58.1± 8.1
+  H2GCN         :  71.6± 5.6
+  GPRGNN        :  55.6±14.0
+  APPNP         :  42.2± 7.5
+  MixHop        :  54.3± 8.9
+  CurvGN        :  46.3± 7.4
+  FAGCN         :  46.3± 7.5
+  ACM-GCN       :  66.2± 6.0
+  A2GCN         :  43.1± 6.7
+
+  Bloco 1 — CGNN (nctm × norm)──────────────────────────────────────────
+  nctm/norm                     CGNN
+  ────────────────────────────────────────────────────────────
+  linear/src               41.3± 6.2
+  linear/dst               38.7± 5.5
+  linear/sym               41.5± 5.8
+  linear/deep_sym          37.8± 6.6
+  linear/alpha             40.7± 5.8
+  linear/acn               41.7± 6.2
+  ────────────────────────────────────────────────────────────
+  sigmoid/src              42.2± 6.2
+  sigmoid/dst              39.9± 6.3
+  sigmoid/sym              41.5± 5.3
+  sigmoid/deep_sym         39.7± 7.7
+  sigmoid/alpha            40.6± 5.9
+  sigmoid/acn              41.3± 6.5
+  ────────────────────────────────────────────────────────────
+  sigmatemp/src            40.4± 6.2
+  sigmatemp/dst            40.5± 5.3
+  sigmatemp/sym            41.2± 5.4
+  sigmatemp/deep_sym       39.1± 7.2
+  sigmatemp/alpha          40.4± 6.0
+  sigmatemp/acn            40.7± 7.5
+
+  Bloco 2 — ACN-GCN ablação (nctm=sigmatemp)────────────────────────────
+  norm                          CGNN  ACN-GCN-noroot         ACN-GCN
+  ────────────────────────────────────────────────────────────
+  src                      40.4± 6.2       56.3± 6.6       66.2± 6.6
+  dst                      40.5± 5.3       56.0± 5.8       64.1± 5.2
+  sym                      41.2± 5.4       56.3± 5.5       66.5± 6.4
+  deep_sym                 39.1± 7.2       57.1± 6.7       72.8± 5.1
+  alpha                    40.4± 6.0       56.0± 4.6       64.3± 7.6
+  acn                      40.7± 7.5       55.5± 6.0       64.9± 7.3
+
+  Cadeia focada — norm=acn (cada linha = uma contribuição)──────────────
+  Modelo                                 Acc  Contribuição
+  ────────────────────────────────────────────────────────────────────
+  CGNN + sym (fixo)                41.2± 5.4  curvatura + norm fixa
+  CGNN + acn                       40.7± 7.5  + normalização adaptativa (α_i)
+  ACN-GCN-noroot + acn             55.5± 6.0  + remoção self-loops (hetero)
+  ACN-GCN + acn                    64.9± 7.3  + W_root separado
+
+  Best (max sobre sweep)────────────────────────────────────────────────
+  CGNN                  :  40.5± 6.3  (n=900)
+  ACN-GCN-noroot        :  56.2± 5.9  (n=300)
+  ACN-GCN               :  66.5± 7.1  (n=300)
+════════════════════════════════════════════════════════════════════════
+
+══════════════════════════════════════════════════════════════════════
+  Dataset: chameleon-filtered  |  curvatura: ollivier
+══════════════════════════════════════════════════════════════════════
+  N=890  E=18598  classes=5  splits=10
+  curvatura ollivier (chameleon-filtered) lida do cache
+  homofilia(treino)=0.238 → hetero  (τ=2.0  rm_sl=True)
+
+  ── ACN diagnóstico [τ=2.0] (τ_α=2.0) ──
+    κ̄_i (nós)    min=-0.5495  p25=-0.0273  med=+0.0691  p75=+0.2920  max=+0.5966  std=0.2162  spread=1.1461
+    α_i  (nós)    min=+0.2499  p25=+0.4864  med=+0.5345  p75=+0.6420  max=+0.7673  std=0.1030  spread=0.5174
+    r̃_ij (arest)  min=+0.0027  p25=+0.0124  med=+0.0180  p75=+0.0465  max=+0.6362  std=0.0662  spread=0.6335
+    α_i  dist.    histograma (10 bins, N=890 nós):
+      [+0.250, +0.302)                                      7 (  0.8%)
+      [+0.302, +0.353)                                     16 (  1.8%)
+      [+0.353, +0.405)  █                                  40 (  4.5%)
+      [+0.405, +0.457)  ██                                 78 (  8.8%)
+      [+0.457, +0.509)  ███████                           212 ( 23.8%)
+      [+0.509, +0.560)  █████                             153 ( 17.2%)
+      [+0.560, +0.612)  ███                               101 ( 11.3%)
+      [+0.612, +0.664)  ███                               107 ( 12.0%)
+      [+0.664, +0.716)  ████                              128 ( 14.4%)
+      [+0.716, +0.767)  █                                  48 (  5.4%)
+  ✓  α_i diversificado (std=0.10304)
+  → figura salva: ./figs/chameleon-filtered_acn_scatter_tau2p0.png
+  [dispersão] std(κ)=0.2639  std(α_i)=0.1030
+
+  ── Baselines (10×5 runs) ──
+    GCN         :  40.1± 3.8
+    GAT         :  38.9± 3.8
+    GraphSAGE   :  39.7± 3.1
+    H2GCN       :  39.7± 4.3
+    GPRGNN      :  38.4± 3.1
+    APPNP       :  39.0± 3.7
+    MixHop      :  43.7± 3.6
+    CurvGN      :  42.1± 3.2
+    FAGCN       :  40.3± 3.6
+    ACM-GCN     :  36.3± 3.5
+    A2GCN       :  39.2± 3.6
+
+  ── Bloco 1: norm sweep (CGNN) ──
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmlinear_normsrc_feat2d.png
+    nctm=linear     norm=src      CGNN= 39.9± 3.6
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmlinear_normdst_feat2d.png
+    nctm=linear     norm=dst      CGNN= 39.2± 3.3
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmlinear_normsym_feat2d.png
+    nctm=linear     norm=sym      CGNN= 39.6± 2.8
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmlinear_normdeep_sym_feat2d.png
+    nctm=linear     norm=deep_sym CGNN= 36.2± 5.4
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmlinear_normalpha_feat2d.png
+    nctm=linear     norm=alpha    CGNN= 39.2± 3.3
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmlinear_normacn_feat2d.png
+    nctm=linear     norm=acn      CGNN= 39.6± 2.7
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmsigmoid_normsrc_feat2d.png
+    nctm=sigmoid    norm=src      CGNN= 40.0± 3.0
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmsigmoid_normdst_feat2d.png
+    nctm=sigmoid    norm=dst      CGNN= 39.6± 3.5
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmsigmoid_normsym_feat2d.png
+    nctm=sigmoid    norm=sym      CGNN= 40.2± 3.2
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmsigmoid_normdeep_sym_feat2d.png
+    nctm=sigmoid    norm=deep_sym CGNN= 35.5± 6.4
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmsigmoid_normalpha_feat2d.png
+    nctm=sigmoid    norm=alpha    CGNN= 39.7± 3.0
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmsigmoid_normacn_feat2d.png
+    nctm=sigmoid    norm=acn      CGNN= 39.6± 2.9
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmsigmatemp_normsrc_feat2d.png
+    nctm=sigmatemp  norm=src      CGNN= 39.4± 3.0
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmsigmatemp_normdst_feat2d.png
+    nctm=sigmatemp  norm=dst      CGNN= 39.1± 2.9
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmsigmatemp_normsym_feat2d.png
+    nctm=sigmatemp  norm=sym      CGNN= 40.0± 3.0
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmsigmatemp_normdeep_sym_feat2d.png
+    nctm=sigmatemp  norm=deep_sym CGNN= 35.5± 5.3
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmsigmatemp_normalpha_feat2d.png
+    nctm=sigmatemp  norm=alpha    CGNN= 39.4± 3.0
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_CGNN_nctmsigmatemp_normacn_feat2d.png
+    nctm=sigmatemp  norm=acn      CGNN= 39.6± 3.4
+
+  ── Bloco 2: ablação ACN-GCN ──
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_ACN-GCN-noroot_normsrc_feat2d.png
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_ACN-GCN_normsrc_feat2d.png
+    norm=src      noroot= 40.8± 3.5  ACN-GCN= 41.6± 3.8
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_ACN-GCN-noroot_normdst_feat2d.png
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_ACN-GCN_normdst_feat2d.png
+    norm=dst      noroot= 39.5± 2.8  ACN-GCN= 41.5± 3.0
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_ACN-GCN-noroot_normsym_feat2d.png
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_ACN-GCN_normsym_feat2d.png
+    norm=sym      noroot= 40.0± 3.3  ACN-GCN= 41.2± 3.6
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_ACN-GCN-noroot_normdeep_sym_feat2d.png
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_ACN-GCN_normdeep_sym_feat2d.png
+    norm=deep_sym noroot= 29.5± 5.5  ACN-GCN= 40.0± 3.7
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_ACN-GCN-noroot_normalpha_feat2d.png
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_ACN-GCN_normalpha_feat2d.png
+    norm=alpha    noroot= 39.2± 2.8  ACN-GCN= 40.9± 3.3
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_ACN-GCN-noroot_normacn_feat2d.png
+  → feat2D: ./results/chameleon-filtered/features/chameleon-filtered_ACN-GCN_normacn_feat2d.png
+    norm=acn      noroot= 39.1± 3.2  ACN-GCN= 40.9± 3.8
+
+  Significância (ACN-GCN + src vs baselines)────────────────────────────
+  GCN         : Δacc= +1.5  p_wilcoxon=0.0914   p_t=0.0322
+  GAT         : Δacc= +2.7  p_wilcoxon=0.0003*  p_t=0.0001
+  GraphSAGE   : Δacc= +1.9  p_wilcoxon=0.0034*  p_t=0.0011
+  H2GCN       : Δacc= +1.9  p_wilcoxon=0.0189*  p_t=0.0160
+  GPRGNN      : Δacc= +3.2  p_wilcoxon=0.0000*  p_t=0.0000
+  APPNP       : Δacc= +2.6  p_wilcoxon=0.0000*  p_t=0.0000
+  MixHop      : Δacc= -2.1  p_wilcoxon=0.0021*  p_t=0.0019
+  CurvGN      : Δacc= -0.5  p_wilcoxon=0.3656   p_t=0.3141
+  FAGCN       : Δacc= +1.2  p_wilcoxon=0.0208*  p_t=0.0254
+  ACM-GCN     : Δacc= +5.3  p_wilcoxon=0.0000*  p_t=0.0000
+  A2GCN       : Δacc= +2.4  p_wilcoxon=0.0001*  p_t=0.0000
+
+════════════════════════════════════════════════════════════════════════
+  RESULTADOS — chameleon-filtered
+════════════════════════════════════════════════════════════════════════
+
+  Baselines─────────────────────────────────────────────────────────────
+  GCN           :  40.1± 3.8
+  GAT           :  38.9± 3.8
+  GraphSAGE     :  39.7± 3.1
+  H2GCN         :  39.7± 4.3
+  GPRGNN        :  38.4± 3.1
+  APPNP         :  39.0± 3.7
+  MixHop        :  43.7± 3.6
+  CurvGN        :  42.1± 3.2
+  FAGCN         :  40.3± 3.6
+  ACM-GCN       :  36.3± 3.5
+  A2GCN         :  39.2± 3.6
+
+  Bloco 1 — CGNN (nctm × norm)──────────────────────────────────────────
+  nctm/norm                     CGNN
+  ────────────────────────────────────────────────────────────
+  linear/src               39.9± 3.6
+  linear/dst               39.2± 3.3
+  linear/sym               39.6± 2.8
+  linear/deep_sym          36.2± 5.4
+  linear/alpha             39.2± 3.3
+  linear/acn               39.6± 2.7
+  ────────────────────────────────────────────────────────────
+  sigmoid/src              40.0± 3.0
+  sigmoid/dst              39.6± 3.5
+  sigmoid/sym              40.2± 3.2
+  sigmoid/deep_sym         35.5± 6.4
+  sigmoid/alpha            39.7± 3.0
+  sigmoid/acn              39.6± 2.9
+  ────────────────────────────────────────────────────────────
+  sigmatemp/src            39.4± 3.0
+  sigmatemp/dst            39.1± 2.9
+  sigmatemp/sym            40.0± 3.0
+  sigmatemp/deep_sym       35.5± 5.3
+  sigmatemp/alpha          39.4± 3.0
+  sigmatemp/acn            39.6± 3.4
+
+  Bloco 2 — ACN-GCN ablação (nctm=sigmatemp)────────────────────────────
+  norm                          CGNN  ACN-GCN-noroot         ACN-GCN
+  ────────────────────────────────────────────────────────────
+  src                      39.4± 3.0       40.8± 3.5       41.6± 3.8
+  dst                      39.1± 2.9       39.5± 2.8       41.5± 3.0
+  sym                      40.0± 3.0       40.0± 3.3       41.2± 3.6
+  deep_sym                 35.5± 5.3       29.5± 5.5       40.0± 3.7
+  alpha                    39.4± 3.0       39.2± 2.8       40.9± 3.3
+  acn                      39.6± 3.4       39.1± 3.2       40.9± 3.8
+
+  Cadeia focada — norm=acn (cada linha = uma contribuição)──────────────
+  Modelo                                 Acc  Contribuição
+  ────────────────────────────────────────────────────────────────────
+  CGNN + sym (fixo)                40.0± 3.0  curvatura + norm fixa
+  CGNN + acn                       39.6± 3.4  + normalização adaptativa (α_i)
+  ACN-GCN-noroot + acn             39.1± 3.2  + remoção self-loops (hetero)
+  ACN-GCN + acn                    40.9± 3.8  + W_root separado
+
+  Best (max sobre sweep)────────────────────────────────────────────────
+  CGNN                  :  39.0± 4.0  (n=900)
+  ACN-GCN-noroot        :  38.0± 5.3  (n=300)
+  ACN-GCN               :  41.0± 3.6  (n=300)
+════════════════════════════════════════════════════════════════════════
+
+══════════════════════════════════════════════════════════════════════
+  Dataset: squirrel-filtered  |  curvatura: ollivier
+══════════════════════════════════════════════════════════════════════
+  N=2223  E=96219  classes=5  splits=10
+  curvatura ollivier (squirrel-filtered) lida do cache
+  homofilia(treino)=0.208 → hetero  (τ=2.0  rm_sl=True)
+
+  ── ACN diagnóstico [τ=2.0] (τ_α=2.0) ──
+    κ̄_i (nós)    min=-0.5552  p25=-0.1325  med=-0.0384  p75=+0.1203  max=+0.5339  std=0.1967  spread=1.0890
+    α_i  (nós)    min=+0.2478  p25=+0.4341  med=+0.4808  p75=+0.5598  max=+0.7442  std=0.0951  spread=0.4964
+    r̃_ij (arest)  min=+0.0019  p25=+0.0044  med=+0.0055  p75=+0.0111  max=+0.6369  std=0.0462  spread=0.6350
+    α_i  dist.    histograma (10 bins, N=2223 nós):
+      [+0.248, +0.297)                                     17 (  0.8%)
+      [+0.297, +0.347)  █                                  80 (  3.6%)
+      [+0.347, +0.397)  ██                                168 (  7.6%)
+      [+0.397, +0.446)  █████                             420 ( 18.9%)
+      [+0.446, +0.496)  ████████                          637 ( 28.7%)
+      [+0.496, +0.546)  ████                              299 ( 13.5%)
+      [+0.546, +0.595)  ██                                180 (  8.1%)
+      [+0.595, +0.645)  ██                                188 (  8.5%)
+      [+0.645, +0.695)  ██                                215 (  9.7%)
+      [+0.695, +0.744)                                     19 (  0.9%)
+  ✓  α_i diversificado (std=0.09514)
+  → figura salva: ./figs/squirrel-filtered_acn_scatter_tau2p0.png
+  [dispersão] std(κ)=0.2435  std(α_i)=0.0951
+
+  ── Baselines (10×5 runs) ──
+    GCN         :  34.6± 1.3
+    GAT         :  34.8± 1.3
+    GraphSAGE   :  36.4± 2.0
+    H2GCN       :  39.5± 1.8
+    GPRGNN      :  36.9± 2.1
+    APPNP       :  34.9± 2.1
+    MixHop      :  41.1± 2.6
+    CurvGN      :  40.2± 2.8
+    FAGCN       :  37.4± 1.6
+    ACM-GCN     :  34.0± 2.0
+    A2GCN       :  34.7± 1.6
+
+  ── Bloco 1: norm sweep (CGNN) ──
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmlinear_normsrc_feat2d.png
+    nctm=linear     norm=src      CGNN= 33.9± 2.3
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmlinear_normdst_feat2d.png
+    nctm=linear     norm=dst      CGNN= 34.9± 1.3
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmlinear_normsym_feat2d.png
+    nctm=linear     norm=sym      CGNN= 35.1± 2.0
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmlinear_normdeep_sym_feat2d.png
+    nctm=linear     norm=deep_sym CGNN= 34.9± 1.7
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmlinear_normalpha_feat2d.png
+    nctm=linear     norm=alpha    CGNN= 34.9± 1.3
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmlinear_normacn_feat2d.png
+    nctm=linear     norm=acn      CGNN= 34.8± 1.7
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmsigmoid_normsrc_feat2d.png
+    nctm=sigmoid    norm=src      CGNN= 33.2± 2.3
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmsigmoid_normdst_feat2d.png
+    nctm=sigmoid    norm=dst      CGNN= 34.6± 1.1
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmsigmoid_normsym_feat2d.png
+    nctm=sigmoid    norm=sym      CGNN= 35.1± 1.8
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmsigmoid_normdeep_sym_feat2d.png
+    nctm=sigmoid    norm=deep_sym CGNN= 35.4± 1.8
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmsigmoid_normalpha_feat2d.png
+    nctm=sigmoid    norm=alpha    CGNN= 35.0± 1.5
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmsigmoid_normacn_feat2d.png
+    nctm=sigmoid    norm=acn      CGNN= 34.8± 1.7
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmsigmatemp_normsrc_feat2d.png
+    nctm=sigmatemp  norm=src      CGNN= 34.0± 1.9
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmsigmatemp_normdst_feat2d.png
+    nctm=sigmatemp  norm=dst      CGNN= 35.1± 1.2
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmsigmatemp_normsym_feat2d.png
+    nctm=sigmatemp  norm=sym      CGNN= 35.1± 1.9
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmsigmatemp_normdeep_sym_feat2d.png
+    nctm=sigmatemp  norm=deep_sym CGNN= 35.4± 1.2
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmsigmatemp_normalpha_feat2d.png
+    nctm=sigmatemp  norm=alpha    CGNN= 35.1± 1.1
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_CGNN_nctmsigmatemp_normacn_feat2d.png
+    nctm=sigmatemp  norm=acn      CGNN= 35.1± 1.9
+
+  ── Bloco 2: ablação ACN-GCN ──
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_ACN-GCN-noroot_normsrc_feat2d.png
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_ACN-GCN_normsrc_feat2d.png
+    norm=src      noroot= 32.9± 1.9  ACN-GCN= 41.3± 2.2
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_ACN-GCN-noroot_normdst_feat2d.png
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_ACN-GCN_normdst_feat2d.png
+    norm=dst      noroot= 34.5± 1.5  ACN-GCN= 36.2± 1.9
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_ACN-GCN-noroot_normsym_feat2d.png
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_ACN-GCN_normsym_feat2d.png
+    norm=sym      noroot= 34.4± 2.0  ACN-GCN= 39.1± 1.9
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_ACN-GCN-noroot_normdeep_sym_feat2d.png
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_ACN-GCN_normdeep_sym_feat2d.png
+    norm=deep_sym noroot= 34.6± 2.2  ACN-GCN= 37.3± 2.1
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_ACN-GCN-noroot_normalpha_feat2d.png
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_ACN-GCN_normalpha_feat2d.png
+    norm=alpha    noroot= 34.6± 1.6  ACN-GCN= 36.5± 1.8
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_ACN-GCN-noroot_normacn_feat2d.png
+  → feat2D: ./results/squirrel-filtered/features/squirrel-filtered_ACN-GCN_normacn_feat2d.png
+    norm=acn      noroot= 34.4± 2.0  ACN-GCN= 38.7± 2.1
+
+  Significância (ACN-GCN + src vs baselines)────────────────────────────
+  GCN         : Δacc= +6.7  p_wilcoxon=0.0000*  p_t=0.0000
+  GAT         : Δacc= +6.4  p_wilcoxon=0.0000*  p_t=0.0000
+  GraphSAGE   : Δacc= +4.9  p_wilcoxon=0.0000*  p_t=0.0000
+  H2GCN       : Δacc= +1.7  p_wilcoxon=0.0001*  p_t=0.0000
+  GPRGNN      : Δacc= +4.3  p_wilcoxon=0.0000*  p_t=0.0000
+  APPNP       : Δacc= +6.3  p_wilcoxon=0.0000*  p_t=0.0000
+  MixHop      : Δacc= +0.2  p_wilcoxon=0.6544   p_t=0.6398
+  CurvGN      : Δacc= +1.0  p_wilcoxon=0.0495*  p_t=0.0323
+  FAGCN       : Δacc= +3.9  p_wilcoxon=0.0000*  p_t=0.0000
+  ACM-GCN     : Δacc= +7.3  p_wilcoxon=0.0000*  p_t=0.0000
+  A2GCN       : Δacc= +6.6  p_wilcoxon=0.0000*  p_t=0.0000
+
+════════════════════════════════════════════════════════════════════════
+  RESULTADOS — squirrel-filtered
+════════════════════════════════════════════════════════════════════════
+
+  Baselines─────────────────────────────────────────────────────────────
+  GCN           :  34.6± 1.3
+  GAT           :  34.8± 1.3
+  GraphSAGE     :  36.4± 2.0
+  H2GCN         :  39.5± 1.8
+  GPRGNN        :  36.9± 2.1
+  APPNP         :  34.9± 2.1
+  MixHop        :  41.1± 2.6
+  CurvGN        :  40.2± 2.8
+  FAGCN         :  37.4± 1.6
+  ACM-GCN       :  34.0± 2.0
+  A2GCN         :  34.7± 1.6
+
+  Bloco 1 — CGNN (nctm × norm)──────────────────────────────────────────
+  nctm/norm                     CGNN
+  ────────────────────────────────────────────────────────────
+  linear/src               33.9± 2.3
+  linear/dst               34.9± 1.3
+  linear/sym               35.1± 2.0
+  linear/deep_sym          34.9± 1.7
+  linear/alpha             34.9± 1.3
+  linear/acn               34.8± 1.7
+  ────────────────────────────────────────────────────────────
+  sigmoid/src              33.2± 2.3
+  sigmoid/dst              34.6± 1.1
+  sigmoid/sym              35.1± 1.8
+  sigmoid/deep_sym         35.4± 1.8
+  sigmoid/alpha            35.0± 1.5
+  sigmoid/acn              34.8± 1.7
+  ────────────────────────────────────────────────────────────
+  sigmatemp/src            34.0± 1.9
+  sigmatemp/dst            35.1± 1.2
+  sigmatemp/sym            35.1± 1.9
+  sigmatemp/deep_sym       35.4± 1.2
+  sigmatemp/alpha          35.1± 1.1
+  sigmatemp/acn            35.1± 1.9
+
+  Bloco 2 — ACN-GCN ablação (nctm=sigmatemp)────────────────────────────
+  norm                          CGNN  ACN-GCN-noroot         ACN-GCN
+  ────────────────────────────────────────────────────────────
+  src                      34.0± 1.9       32.9± 1.9       41.3± 2.2
+  dst                      35.1± 1.2       34.5± 1.5       36.2± 1.9
+  sym                      35.1± 1.9       34.4± 2.0       39.1± 1.9
+  deep_sym                 35.4± 1.2       34.6± 2.2       37.3± 2.1
+  alpha                    35.1± 1.1       34.6± 1.6       36.5± 1.8
+  acn                      35.1± 1.9       34.4± 2.0       38.7± 2.1
+
+  Cadeia focada — norm=acn (cada linha = uma contribuição)──────────────
+  Modelo                                 Acc  Contribuição
+  ────────────────────────────────────────────────────────────────────
+  CGNN + sym (fixo)                35.1± 1.9  curvatura + norm fixa
+  CGNN + acn                       35.1± 1.9  + normalização adaptativa (α_i)
+  ACN-GCN-noroot + acn             34.4± 2.0  + remoção self-loops (hetero)
+  ACN-GCN + acn                    38.7± 2.1  + W_root separado
+
+  Best (max sobre sweep)────────────────────────────────────────────────
+  CGNN                  :  34.8± 1.8  (n=900)
+  ACN-GCN-noroot        :  34.2± 2.0  (n=300)
+  ACN-GCN               :  38.2± 2.7  (n=300)
+════════════════════════════════════════════════════════════════════════
