@@ -69,18 +69,7 @@ The CGNN and ACN-GCN-noroot rows show their best configuration. Table II (every 
 
 ## Citation
 
-If you use this code, please cite the paper. 
-
-```bibtex
-@inproceedings{chavari2026acngcn,
-  author    = {Chavari, Gustavo H. and Messias, Guilherme H. and Valejo, Alan D. B. and Levada, Alexandre L. M.},
-  title     = {Preserving Source Identity under Curvature-Weighted Aggregation in Heterophilic Graph Neural Networks},
-  booktitle = {Proceedings of the 39th Conference on Graphics, Patterns and Images (SIBGRAPI)},
-  year      = {2026},
-  address   = {Goiânia, GO, Brazil},
-  publisher = {}
-}
-```
+To be included soon. If you use this code, please cite the paper. 
 
 ## License
 
