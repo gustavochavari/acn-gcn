@@ -7,17 +7,17 @@
 
 ACN-GCN (Adaptive Curvature Normalization GCN) extends CGNN in two ways:
 
-1. **Source-decoupled propagation.** A dedicated matrix $W_{\mathrm{source}}$ transforms the node's own representation, and neighbor messages go through a separate $W$:
+**1. Source-decoupled propagation.** A dedicated matrix $W_{\mathrm{source}}$ transforms the node's own representation, and neighbor messages go through a separate $W$:
 
-   ```math
-   h_i^{(\ell+1)} = \sigma\Big(W_{\mathrm{source}}^{(\ell)} h_i^{(\ell)} + \sum_{j \in \mathcal{N}(i)} c_{ij}^{\mathrm{ACN}}\, W^{(\ell)} h_j^{(\ell)}\Big)
-   ```
+```math
+h_i^{(\ell+1)} = \sigma\Big(W_{\mathrm{source}}^{(\ell)} h_i^{(\ell)} + \sum_{j \in \mathcal{N}(i)} c_{ij}^{\mathrm{ACN}}\, W^{(\ell)} h_j^{(\ell)}\Big)
+```
 
-2. **Node-wise adaptive normalization.** Edge Ollivier-Ricci curvature $\kappa_{ij}$ is mapped to weights $`r'_{ij}=\sigma(\tau\kappa_{ij})`$. Each node gets an exponent $\alpha_i=\sigma(\tau\bar\kappa_i)$ from its curvature-weighted mean curvature $\bar\kappa_i$, and messages are normalized as
+**2. Node-wise adaptive normalization.** Edge Ollivier-Ricci curvature $\kappa_{ij}$ is mapped to weights $`r'_{ij}=\sigma(\tau\kappa_{ij})`$. Each node gets an exponent $\alpha_i=\sigma(\tau\bar\kappa_i)$ from its curvature-weighted mean curvature $\bar\kappa_i$, and messages are normalized as
 
-   ```math
-   c_{ij}^{\mathrm{ACN}} = \frac{r'_{ij}}{(d'_i)^{\alpha_i}\,(d'_j)^{1-\alpha_i}}, \qquad d'_i=\sum_{j\in\mathcal{N}(i)} r'_{ij}.
-   ```
+```math
+c_{ij}^{\mathrm{ACN}} = \frac{r'_{ij}}{(d'_i)^{\alpha_i}\,(d'_j)^{1-\alpha_i}}, \qquad d'_i=\sum_{j\in\mathcal{N}(i)} r'_{ij}.
+```
 
 ## Repository layout
 
