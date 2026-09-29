@@ -1,11 +1,8 @@
-# ACN-GCN: Preserving Source Identity under Curvature-Weighted Aggregation in Heterophilic Graph Neural Networks
-
-
-> *Preserving Source Identity under Curvature-Weighted Aggregation in Heterophilic Graph Neural Networks.*
+# Preserving Source Identity under Curvature-Weighted Aggregation in Heterophilic Graph Neural Networks
 > G. H. Chavari, G. H. Messias, A. D. B. Valejo, A. L. M. Levada.
 > SIBGRAPI 2026.
 
-ACN-GCN (Adaptive Curvature Normalization GCN) extends CGNN in two ways:
+In this paper, we propose a method to decouple source information from CGNN (Curvature Graph Neural Networks). ACN-GCN (Adaptive Curvature Normalization GCN) extends CGNN in two ways:
 
 **1. Source-decoupled propagation.** A dedicated matrix $W_{\mathrm{source}}$ transforms the node's own representation, and neighbor messages go through a separate $W$:
 
